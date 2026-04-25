@@ -2,37 +2,37 @@
 
 **The Evolution of Todo – Mastering Spec-Driven Development & Cloud Native AI**
 
-The future of software development is **AI-native and spec-driven**. As AI agents like Claude Code become more powerful, the role of the engineer shifts from "syntax writer" to "system architect." We have already explored Spec-Driven Book Authoring. Now, we want you to master the **Architecture of Intelligence**.
+The future of software development is **AI-native and spec-driven**. As AI agents like opencode become more powerful, the role of the engineer shifts from "syntax writer" to "system architect." We have already explored Spec-Driven Book Authoring. Now, we want you to master the **Architecture of Intelligence**.
 
-In this hackathon, you will master the art of building applications iteratively—starting from a simple console app and evolving it into a fully-featured, cloud-native AI chatbot deployed on Kubernetes. This journey will teach you the [Nine Pillars of AI-Driven Development](https://ai-native.panaversity.org/docs/Introducing-AI-Driven-Development/nine-pillars), [Claude Code](https://ai-native.panaversity.org/docs/AI-Tool-Landscape/claude-code-features-and-workflows), [Spec-Driven Development with Reusable Intelligence](https://ai-native.panaversity.org/docs/SDD-RI-Fundamentals) and Cloud-Native AI technologies through hands-on implementation.
+In this hackathon, you will master the art of building applications iteratively—starting from a simple console app and evolving it into a fully-featured, cloud-native AI chatbot deployed on Kubernetes. This journey will teach you the [Nine Pillars of AI-Driven Development](https://ai-native.panaversity.org/docs/Introducing-AI-Driven-Development/nine-pillars), [opencode](https://ai-native.panaversity.org/docs/AI-Tool-Landscape/claude-code-features-and-workflows), [Spec-Driven Development with Reusable Intelligence](https://ai-native.panaversity.org/docs/SDD-RI-Fundamentals) and Cloud-Native AI technologies through hands-on implementation.
 
 **Excel in the Hackathon and Launch Your Journey as an AI Startup Founder 🚀**  
 We've recently launched **Panaversity (panaversity.org)**, an initiative focused on teaching cutting-edge AI courses. If you perform well in this hackathon, you may be invited for an interview to join the **Panaversity core team** and potentially step into the role of a **startup founder** within this growing ecosystem. You will get a chance to work with Panaversity founders Zia, Rehan, Junaid, and Wania and become the very best. You may also get a chance to teach at Panaversity, PIAIC, and GIAIC.
 
 # **What You Will Learn**
 
-* Spec-Driven Development using Claude Code and Spec-Kit Plus  
+* Spec-Driven Development using opencode and Spec-Kit  
 * Reusable Intelligence: Agents Skills and Subagent Development  
 * Full-Stack Development with Next.js, FastAPI, SQLModel, and Neon Serverless Database  
 * AI Agent Development using OpenAI Agents SDK and Official MCP SDK  
 * Cloud-Native Deployment with Docker, Kubernetes, Minikube, and Helm Charts  
 * Event-Driven Architecture using Kafka and Dapr  
-* AIOps with kubectl-ai, kagent and Claude Code  
+* AIOps with kubectl-ai, kagent and opencode  
 * Develop Cloud-Native Blueprints for Spec-Driven Deployment
 
 Research Note: Deployment Blueprints for Spec-Driven Deployment
 
 1. [Is Spec-Driven Development Key for Infrastructure Automation?](https://thenewstack.io/is-spec-driven-development-key-for-infrastructure-automation/)  
 2. [ChatGPT Progressive Learning Conversation](https://chatgpt.com/share/6924914a-43dc-8001-8f67-af29c4d9617e)  
-3. [Spec-Driven Cloud-Native Architecture: Governing AI Agents for Managed Services with Claude Code and SpecKit](https://claude.ai/public/artifacts/6025a232-6ebe-4c42-bb51-02dbd4603e18)  
+3. [Spec-Driven Cloud-Native Architecture: Governing AI Agents for Managed Services with opencode and SpecKit](https://claude.ai/public/artifacts/6025a232-6ebe-4c42-bb51-02dbd4603e18)  
    
 
 ## **Requirements**
 
-You are required to complete the **5-Phase "Evolution of Todo" Project** using Claude Code and Spec-Kit Plus. The core deliverables are:
+You are required to complete the **5-Phase "Evolution of Todo" Project** using opencode and Spec-Kit. The core deliverables are:
 
-* **Spec-Driven Implementation:** You must implement all **5 Phases** of the project (detailed below). You are strictly required to use **Spec-Driven Development**. You must write a Markdown Constitution and Spec for every feature of the phase, and use **Claude Code** to generate the implementation.  
-  * *Constraint:* You cannot write the code manually. You must refine the *Spec* until Claude Code generates the correct output.  
+* **Spec-Driven Implementation:** You must implement all **5 Phases** of the project (detailed below). You are strictly required to use **Spec-Driven Development**. You must write a Markdown Constitution and Spec for every feature of the phase, and use **opencode** to generate the implementation.  
+  * *Constraint:* You cannot write the code manually. You must refine the *Spec* until opencode generates the correct output.  
 * **Integrated AI Chatbot:** In Phases III, IV, and V, you must implement a conversational interface using **OpenAI Chatkit**, **OpenAI Agents SDK**, and **Official MCP SDK**. The bot must be able to manage the user's Todo list via natural language (e.g., "Reschedule my morning meetings to 2 PM").  
 * **Cloud Native Deployment:** In Phases IV and V, you must deploy the chatbot locally on Minikube, and on the cloud on DigitalOcean Kubernetes (DOKS). 
 
@@ -68,7 +68,7 @@ Use Agentic Dev Stack for building this hackathon project.
 
 | Phase | Description | Technology Stack | Points | Due Date |
 | ----- | ----- | ----- | :---: | :---: |
-| Phase I | In-Memory Python Console App | Python, Claude Code, Spec-Kit Plus | 100 | Dec 7, 2025 |
+| Phase I | In-Memory Python Console App | Python, opencode, Spec-Kit | 100 | Dec 7, 2025 |
 | Phase II | Full-Stack Web Application | Next.js, FastAPI, SQLModel, Neon DB | 150 | Dec 14, 2025 |
 | Phase III | AI-Powered Todo Chatbot | OpenAI ChatKit, Agents SDK, Official MCP SDK | 200 | Dec 21, 2025 |
 | Phase IV | Local Kubernetes Deployment | Docker, Minikube, Helm, kubectl-ai, kagent | 250 | Jan 4, 2026 |
@@ -81,7 +81,7 @@ Participants can earn additional bonus points for exceptional implementations:
 
 | Bonus Feature | Points |
 | :---- | :---: |
-| Reusable Intelligence – Create and use reusable intelligence via Claude Code Subagents and Agent Skills | \+200 |
+| Reusable Intelligence – Create and use reusable intelligence via opencode Subagents and Agent Skills | \+200 |
 | Create and use Cloud-Native Blueprints via Agent Skills | \+200 |
 | Multi-language Support – Support Urdu in chatbot | \+100 |
 | Voice Commands – Add voice input for todo commands | \+200 |
@@ -153,22 +153,22 @@ This project simulates the real-world evolution of software. You will start with
 
 *Basic Level Functionality*
 
-**Objective:** Build a command-line todo application that stores tasks in memory using Claude Code and Spec-Kit Plus.
+**Objective:** Build a command-line todo application that stores tasks in memory using opencode and Spec-Kit.
 
-💡**Development Approach:** Use the [Agentic Dev Stack workflow](#the-agentic-dev-stack:-agents.md-+-spec-kitplus-+-claude-code): Write spec → Generate plan → Break into tasks → Implement via Claude Code. No manual coding allowed. We will review the process, prompts, and iterations to judge each phase and project.
+💡**Development Approach:** Use the [Agentic Dev Stack workflow](#the-agentic-dev-stack:-agents.md-+-spec-kitplus-+-claude-code): Write spec → Generate plan → Break into tasks → Implement via opencode. No manual coding allowed. We will review the process, prompts, and iterations to judge each phase and project.
 
 ## **Requirements**
 
 * Implement all 5 Basic Level features (Add, Delete, Update, View, Mark Complete)  
-* Use spec-driven development with Claude Code and Spec-Kit Plus  
+* Use spec-driven development with opencode and Spec-Kit  
 * Follow clean code principles and proper Python project structure
 
 ## **Technology Stack**
 
 * UV  
 * Python 3.13+  
-* Claude Code  
-* Spec-Kit Plus
+* opencode  
+* Spec-Kit
 
 ## **Deliverables**
 
@@ -177,7 +177,7 @@ This project simulates the real-world evolution of software. You will start with
 * specs history folder containing all specification files  
 * /src folder with Python source code  
 * README.md with setup instructions  
-* CLAUDE.md with Claude Code instructions  
+* agents.md with opencode instructions  
     
 2. Working console application demonstrating:  
 * Adding tasks with title and description  
@@ -203,9 +203,9 @@ wsl \--install \-d Ubuntu-22.04
 
 *Basic Level Functionality*
 
-**Objective:** Using Claude Code and Spec-Kit Plus transform the console app into a modern multi-user web application with persistent storage.
+**Objective:** Using opencode and Spec-Kit transform the console app into a modern multi-user web application with persistent storage.
 
-💡**Development Approach:** Use the [Agentic Dev Stack workflow](#the-agentic-dev-stack:-agents.md-+-spec-kitplus-+-claude-code): Write spec → Generate plan → Break into tasks → Implement via Claude Code. No manual coding allowed. We will review the process, prompts, and iterations to judge each phase and project.
+💡**Development Approach:** Use the [Agentic Dev Stack workflow](#the-agentic-dev-stack:-agents.md-+-spec-kitplus-+-claude-code): Write spec → Generate plan → Break into tasks → Implement via opencode. No manual coding allowed. We will review the process, prompts, and iterations to judge each phase and project.
 
 ## **Requirements**
 
@@ -223,7 +223,7 @@ wsl \--install \-d Ubuntu-22.04
 | Backend | Python FastAPI |
 | ORM | SQLModel |
 | Database | Neon Serverless PostgreSQL |
-| Spec-Driven | Claude Code \+ Spec-Kit Plus |
+| Spec-Driven | opencode \+ Spec-Kit |
 | Authentication | Better Auth |
 
 ## **API Endpoints**
@@ -297,9 +297,9 @@ The REST API endpoints stay the same (**GET /api/user\_id/tasks**, **POST /api/u
 
 # 
 
-# **Monorepo Organization For Full-Stack Projects With GitHub Spec-Kit \+ Claude Code**
+# **Monorepo Organization For Full-Stack Projects With GitHub Spec-Kit \+ opencode**
 
-This guide explains how to organize your Full-Stack Projects in a monorepo to integrate **GitHub Spec-Kit** for spec-driven development with **Claude Code**. This guide explains how to organize your repository so that Claude Code and Spec-Kit Plus can effectively edit both frontend (Next.js) and backend (FastAPI) code in a single context.
+This guide explains how to organize your Full-Stack Projects in a monorepo to integrate **GitHub Spec-Kit** for spec-driven development with **opencode**. This guide explains how to organize your repository so that opencode and Spec-Kit can effectively edit both frontend (Next.js) and backend (FastAPI) code in a single context.
 
 # **Spec-Kit Monorepo Folder Structure**
 
@@ -321,12 +321,12 @@ hackathon-todo/
 │   └── ui/                       \# UI specifications  
 │       ├── components.md  
 │       └── pages.md  
-├── CLAUDE.md                     \# Root Claude Code instructions  
+├── agents.md                     \# Root opencode instructions  
 ├── frontend/  
-│   ├── CLAUDE.md  
+│   ├── agents.md  
 │   └── ... (Next.js app)  
 ├── backend/  
-│   ├── CLAUDE.md  
+│   ├── agents.md  
 │   └── ... (FastAPI app)  
 ├── docker-compose.yml  
 └── README.md
@@ -361,11 +361,11 @@ phases:
   \- name: phase3-chatbot  
     features: \[task-crud, authentication, chatbot\]
 
-# **CLAUDE.md Files**
+# **agents.md Files**
 
-Create multiple CLAUDE.md files to provide context at different levels:
+Create multiple agents.md files to provide context at different levels:
 
-# **Root CLAUDE.md**
+# **Root agents.md**
 
 \# Todo App \- Hackathon II  
    
@@ -391,8 +391,8 @@ Specifications are organized in /specs:
    
 \#\# Development Workflow  
 1\. Read spec: @specs/features/\[feature\].md  
-2\. Implement backend: @backend/CLAUDE.md  
-3\. Implement frontend: @frontend/CLAUDE.md  
+2\. Implement backend: @backend/agents.md  
+3\. Implement frontend: @frontend/agents.md  
 4\. Test and iterate  
    
 \#\# Commands  
@@ -400,7 +400,7 @@ Specifications are organized in /specs:
 \- Backend: cd backend && uvicorn main:app \--reload  
 \- Both: docker-compose up
 
-## **Frontend CLAUDE.md**
+## **Frontend agents.md**
 
 \# Frontend Guidelines  
    
@@ -431,7 +431,7 @@ const tasks \= await api.getTasks()
 
 ## 
 
-## **Backend CLAUDE.md**
+## **Backend agents.md**
 
 \# Backend Guidelines  
    
@@ -563,15 +563,15 @@ Response: Created Task object
 \- tasks.user\_id (for filtering by user)  
 \- tasks.completed (for status filtering)
 
-# **Workflow with Spec-KitPlus \+ Claude Code**
+# **Workflow with Spec-Kit \+ opencode**
 
 * Write/Update Spec → @specs/features/new-feature.md  
-* Ask Claude Code to Implement → "Implement @specs/features/new-feature.md"  
-* Claude Code reads: Root CLAUDE.md, Feature spec, API spec, Database spec, Relevant CLAUDE.md  
-* Claude Code implements in both frontend and backend  
+* Ask opencode to Implement → "Implement @specs/features/new-feature.md"  
+* opencode reads: Root agents.md, Feature spec, API spec, Database spec, Relevant agents.md  
+* opencode implements in both frontend and backend  
 * Test and iterate on spec if needed
 
-# **Referencing Specs in Claude Code**
+# **Referencing Specs in opencode**
 
 \# Implement a feature  
 You: @specs/features/task-crud.md implement the create task feature  
@@ -591,29 +591,29 @@ You: @specs/features/authentication.md implement Better Auth login
 | :---- | :---- |
 | **/.spec-kit/config.yaml** | Spec-Kit configuration |
 | **/specs/\<features\>/\*\*** | What to build |
-| **/CLAUDE.md** | How to navigate and use specs |
-| **/frontend/CLAUDE.md** | Frontend-specific patterns |
-| **/backend/CLAUDE.md** | Backend-specific patterns |
+| **/agents.md** | How to navigate and use specs |
+| **/frontend/agents.md** | Frontend-specific patterns |
+| **/backend/agents.md** | Backend-specific patterns |
 
 **Key Point:**   
-Spec-Kit Plus provides organized, structured specs that Claude Code can reference. The CLAUDE.md files tell Claude Code how to use those specs and project-specific conventions.
+Spec-Kit provides organized, structured specs that opencode can reference. The agents.md files tell opencode how to use those specs and project-specific conventions.
 
 # **Summary: Monorepo vs Separate Repos**
 
 | Approach | Pros | Cons |
 | :---- | :---- | :---- |
-| **Monorepo ⭐** | Single CLAUDE.md context, easier cross-cutting changes | Larger repo |
-| Separate Repos | Clear separation, independent deployments | Claude Code needs workspace setup |
+| **Monorepo ⭐** | Single agents.md context, easier cross-cutting changes | Larger repo |
+| Separate Repos | Clear separation, independent deployments | opencode needs workspace setup |
 
 **Recommendation:**   
-Use monorepo for the hackathon – simpler for Claude Code to navigate and edit both frontend and backend in a single context.
+Use monorepo for the hackathon – simpler for opencode to navigate and edit both frontend and backend in a single context.
 
 # **Key Benefits of This Structure**
 
 | Benefit | Description |
 | :---- | :---- |
-| **Single Context** | Claude Code sees entire project, can make cross-cutting changes |
-| **Layered CLAUDE.md** | Root file for overview, subfolder files for specific guidelines |
+| **Single Context** | opencode sees entire project, can make cross-cutting changes |
+| **Layered agents.md** | Root file for overview, subfolder files for specific guidelines |
 | **Specs Folder** | Reference specifications directly with @specs/filename.md |
 | **Clear Separation** | Frontend and backend code in separate folders, easy to navigate |
 
@@ -621,9 +621,9 @@ Use monorepo for the hackathon – simpler for Claude Code to navigate and edit 
 
 *Basic Level Functionality*
 
-**Objective:** Create an AI-powered chatbot interface for managing todos through natural language using MCP (Model Context Protocol) server architecture and using Claude Code and Spec-Kit Plus.
+**Objective:** Create an AI-powered chatbot interface for managing todos through natural language using MCP (Model Context Protocol) server architecture and using opencode and Spec-Kit.
 
-💡**Development Approach:** Use the [Agentic Dev Stack workflow](#the-agentic-dev-stack:-agents.md-+-spec-kitplus-+-claude-code): Write spec → Generate plan → Break into tasks → Implement via Claude Code. No manual coding allowed. We will review the process, prompts, and iterations to judge each phase and project.
+💡**Development Approach:** Use the [Agentic Dev Stack workflow](#the-agentic-dev-stack:-agents.md-+-spec-kitplus-+-claude-code): Write spec → Generate plan → Break into tasks → Implement via opencode. No manual coding allowed. We will review the process, prompts, and iterations to judge each phase and project.
 
 # **Requirements**
 
@@ -851,7 +851,7 @@ NEXT\_PUBLIC\_OPENAI\_DOMAIN\_KEY=your-domain-key-here
 
 **Objective:** Deploy the Todo Chatbot on a local Kubernetes cluster using Minikube, Helm Charts.
 
-💡**Development Approach:** Use the [Agentic Dev Stack workflow](#the-agentic-dev-stack:-agents.md-+-spec-kitplus-+-claude-code): Write spec → Generate plan → Break into tasks → Implement via Claude Code. No manual coding allowed. We will review the process, prompts, and iterations to judge each phase and project.
+💡**Development Approach:** Use the [Agentic Dev Stack workflow](#the-agentic-dev-stack:-agents.md-+-spec-kitplus-+-claude-code): Write spec → Generate plan → Break into tasks → Implement via opencode. No manual coding allowed. We will review the process, prompts, and iterations to judge each phase and project.
 
 ## **Requirements**
 
@@ -861,7 +861,7 @@ NEXT\_PUBLIC\_OPENAI\_DOMAIN\_KEY=your-domain-key-here
 * Use kubectl-ai and kagent for AI-assisted Kubernetes operations  
 * Deploy on Minikube locally
 
-*Note: If Docker AI (Gordon) is unavailable in your region or tier, use standard Docker CLI commands or ask Claude Code to generate the `docker run` commands for you.*
+*Note: If Docker AI (Gordon) is unavailable in your region or tier, use standard Docker CLI commands or ask opencode to generate the `docker run` commands for you.*
 
 ## **Technology Stack**
 
@@ -897,11 +897,11 @@ kagent "optimize resource allocation"
 Starting with kubectl-ai will make you feel empowered from day one. Layer in Kagent for advanced use cases. Pair them with Minikube for zero-cost learning and work.
 
 **Research Note: Using Blueprints for Spec-Driven Deployment**  
-Can Spec-Driven Development be used for infrastructure automation, and how we may need to use blueprints powered by Claude Code Agent Skills.
+Can Spec-Driven Development be used for infrastructure automation, and how we may need to use blueprints powered by opencode Agent Skills.
 
 1. [Is Spec-Driven Development Key for Infrastructure Automation?](https://thenewstack.io/is-spec-driven-development-key-for-infrastructure-automation/)  
 2. [ChatGPT Progressive Learning Conversation](https://chatgpt.com/share/6924914a-43dc-8001-8f67-af29c4d9617e)  
-3. [Spec-Driven Cloud-Native Architecture: Governing AI Agents for Managed Services with Claude Code and SpecKit](https://claude.ai/public/artifacts/6025a232-6ebe-4c42-bb51-02dbd4603e18)  
+3. [Spec-Driven Cloud-Native Architecture: Governing AI Agents for Managed Services with opencode and SpecKit](https://claude.ai/public/artifacts/6025a232-6ebe-4c42-bb51-02dbd4603e18)  
  
 
 
@@ -911,7 +911,7 @@ Can Spec-Driven Development be used for infrastructure automation, and how we ma
 
 **Objective:** Implement advanced features and deploy first on Minikube locally and then to production-grade Kubernetes on Azure/Google Cloud/Oracle and Kafka within Kubernetes Cluster or with a managed service like Redpanda Cloud.
 
-💡**Development Approach:** Use the [Agentic Dev Stack workflow](#the-agentic-dev-stack:-agents.md-+-spec-kitplus-+-claude-code): Write spec → Generate plan → Break into tasks → Implement via Claude Code. No manual coding allowed. We will review the process, prompts, and iterations to judge each phase and project.
+💡**Development Approach:** Use the [Agentic Dev Stack workflow](#the-agentic-dev-stack:-agents.md-+-spec-kitplus-+-claude-code): Write spec → Generate plan → Break into tasks → Implement via opencode. No manual coding allowed. We will review the process, prompts, and iterations to judge each phase and project.
 
 ## **Part A: Advanced Features**
 
@@ -1449,7 +1449,7 @@ Dapr abstracts infrastructure (Kafka, DB, Secrets) behind simple HTTP APIs. Your
 1. Public GitHub Repository containing:  
 * All source code for all completed phases  
 * /specs folder with all specification files  
-* CLAUDE.md with Claude Code instructions  
+* agents.md with opencode instructions  
 * README.md with comprehensive documentation  
 * Clear folder structure for each phase  
     
@@ -1471,7 +1471,7 @@ Dapr abstracts infrastructure (Kafka, DB, Secrets) behind simple HTTP APIs. Your
 
 | Tool | Link | Description |
 | :---- | :---- | :---- |
-| Claude Code | claude.com/product/claude-code | AI coding assistant |
+| opencode | claude.com/product/claude-code | AI coding assistant |
 | GitHub Spec-Kit | github.com/panaversity/spec-kit-plus | Specification management |
 | OpenAI ChatKit | platform.openai.com/docs/guides/chatkit | Chatbot UI framework |
 | MCP | github.com/modelcontextprotocol/python-sdk | MCP server framework |
@@ -1504,25 +1504,25 @@ A: This is an individual hackathon. Each participant submits separately.
 **Q: What if I don't complete all the phases?**  
 A: Submit what you complete. Partial submissions are evaluated proportionally.
 
-# **The Agentic Dev Stack: AGENTS.md \+ Spec-KitPlus \+ Claude Code** {#the-agentic-dev-stack:-agents.md-+-spec-kitplus-+-claude-code}
+# **The Agentic Dev Stack: AGENTS.md \+ Spec-Kit \+ opencode** {#the-agentic-dev-stack:-agents.md-+-spec-kitplus-+-claude-code}
 
-This is a powerful integration. By combining the **declarative** nature of AGENTS.md, the **structured workflow** of Panaversity Spec-KitPlus, and the **agentic execution** of Claude Code, you move from "vibe-coding" to a professional, spec-driven engineering pipeline.
+This is a powerful integration. By combining the **declarative** nature of AGENTS.md, the **structured workflow** of Panaversity Spec-Kit, and the **agentic execution** of opencode, you move from "vibe-coding" to a professional, spec-driven engineering pipeline.
 
-This section outlines a workflow where AGENTS.md acts as the **Constitution**, Spec-KitPlus acts as the **Architect**, and Claude Code acts as the **Builder**.
+This section outlines a workflow where AGENTS.md acts as the **Constitution**, Spec-Kit acts as the **Architect**, and opencode acts as the **Builder**.
 
 ## **1\. The Mental Model: Who Does What?**
 
 | Component | Role | Responsibility |
 | :---- | :---- | :---- |
 | **AGENTS.md** | **The Brain** | Cross-agent truth. Defines *how* agents should behave, what tools to use, and coding standards. |
-| **Spec-KitPlus** | **The Architect** | Manages spec artifacts (.specify, .plan, .tasks). Ensures technical rigor before coding starts. |
-| **Claude Code** | **The Executor** | The agentic environment. Reads the project memory and executes Spec-Kit tools via MCP. |
+| **Spec-Kit** | **The Architect** | Manages spec artifacts (.specify, .plan, .tasks). Ensures technical rigor before coding starts. |
+| **opencode** | **The Executor** | The agentic environment. Reads the project memory and executes Spec-Kit tools via MCP. |
 
-**Key Idea:** Claude reads AGENTS.md via a tiny CLAUDE.md shim and interacts with Spec-KitPlus. For development setup an MCP Server and upgrade specifyplus commands to be available as Prompts in MCP. SpecKitPlus MCP server ensures every line of code maps back to a validated task.
+**Key Idea:** Claude reads AGENTS.md via a tiny agents.md shim and interacts with Spec-Kit. For development setup an MCP Server and upgrade specifyplus commands to be available as Prompts in MCP. SpecKitPlus MCP server ensures every line of code maps back to a validated task.
 
 ## ---
 
-**2\. Step 1: Initialize Spec-KitPlus**
+**2\. Step 1: Initialize Spec-Kit**
 
 First, scaffold the spec-driven structure in your project root. This ensures the agent has the necessary templates to create structured plans.
 
@@ -1712,9 +1712,9 @@ Before every session, agents should re-read:
 This ensures predictable, deterministic development.  
 \`\`\`
 
-## **4\. Step 3: Wire Spec-KitPlus into Claude via MCP**
+## **4\. Step 3: Wire Spec-Kit into Claude via MCP**
 
-To let Claude Code actually *run* Spec-KitPlus commands, you will set up an MCP server with prompts present in .claude/commands. Each command here will become a prompt in the MCP server.
+To let opencode actually *run* Spec-Kit commands, you will set up an MCP server with prompts present in .claude/commands. Each command here will become a prompt in the MCP server.
 
 ### **4.1 Install SpecKitPlus, Create an MCP Server**
 
@@ -1725,9 +1725,9 @@ To let Claude Code actually *run* Spec-KitPlus commands, you will set up an MCP 
 5. Use these as part of your prompt instructions in specify: \`We have specifyplus commands on @.claude/commands/\*\* Each command takes user input and updates its prompt variable before sending it to the agent. Now you will use your mcp builder skill and create an mcp server where these commands are available as prompts. Goal: Now we can run this MCP server and connect with any agent and IDE.  
 6. Test the MCP server
 
-### **4.2 Register with Claude Code**
+### **4.2 Register with opencode**
 
-Add the server to your Claude Code config (usually .mcp.json at your project root):
+Add the server to your opencode config (usually .mcp.json at your project root):
 
 {  
   "mcpServers": {  
@@ -1741,32 +1741,32 @@ Add the server to your Claude Code config (usually .mcp.json at your project roo
 
 **Success:**
 
-- After running MCP Server and connecting it with Claude Code now you can have the same commands available as MCP prompts.
+- After running MCP Server and connecting it with opencode now you can have the same commands available as MCP prompts.
 
 ## 
 
 ## ---
 
-**5\. Step 4: Connect Claude Code via the "Shim"**
+**5\. Step 4: Connect opencode via the "Shim"**
 
-Copy the default [CLAUDE.md](http://CLAUDE.md) file and integrate the content within AGENTS.md . Claude Code automatically looks for CLAUDE.md. To keep a single source of truth, use a redirection pattern.
+Copy the default [agents.md](http://agents.md) file and integrate the content within AGENTS.md . opencode automatically looks for agents.md. To keep a single source of truth, use a redirection pattern.
 
-**Create CLAUDE.md in your root:**
+**Create agents.md in your root:**
 
 **\`\`\`markdown**	
 
 @AGENTS.md  
 **\`\`\`**
 
-*This "forwarding" ensures Claude Code loads your comprehensive agent instructions into its context window immediately upon startup.*
+*This "forwarding" ensures opencode loads your comprehensive agent instructions into its context window immediately upon startup.*
 
 ## ---
 
 ## **6\. Step 5: The Day-to-Day Workflow**
 
-Once configured, your interaction with Claude Code looks like this:
+Once configured, your interaction with opencode looks like this:
 
-* **Context Loading:** You start Claude Code. It reads CLAUDE.md \-\> AGENTS.md and realizes it must use Spec-Kit.  
+* **Context Loading:** You start opencode. It reads agents.md \-\> AGENTS.md and realizes it must use Spec-Kit.  
 * **Spec Generation:**  
   * *User:* "I need a project dashboard."  
   * *Claude:* Calls speckit\_specify and speckit\_plan using the MCP.  
@@ -1791,7 +1791,7 @@ It is important not to duplicate information.
 
 3. **Initialize:** specify init creates the structure.  
 4. **Instruct:** AGENTS.md defines the rules.  
-5. **Bridge:** CLAUDE.md (@AGENTS.md) connects the agent.  
+5. **Bridge:** agents.md (@AGENTS.md) connects the agent.  
 6. **Empower:** MCP gives the agent the tools to execute.
 
 **Good luck, and may your specs be clear and your code be clean\! 🚀**
