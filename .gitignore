@@ -1,0 +1,26 @@
+__pycache__/
+*.pyc
+*.pyo
+.venv/
+venv/
+*.egg-info/
+dist/
+build/
+node_modules/
+.next/
+
+# Environment variable files — never commit secrets
+.env
+.env.local
+.env.*.local
+
+# but commit example/template files
+!.env.example
+!.env.*.example
+
+*.log
+.DS_Store
+.idea/
+.vscode/
+*.swp
+*.tmp

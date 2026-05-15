@@ -1,67 +1,47 @@
-# Todo App - Hackathon II
+# Todo App - Hackathon II (Phase II Active)
 
 ## Project Overview
 This is a monorepo using opencode with Spec-Kit for spec-driven development.
-The project follows the Evolution of Todo through 5 phases.
+The project is currently in **Phase II: Full-Stack Web Application**.
 
 ## Tech Stack
-- **Phase I**: Python Console App (UV, Python 3.13+, opencode)
-- **Phase II**: Next.js + FastAPI + SQLModel + Neon DB
-- **Phase III**: OpenAI ChatKit + Agents SDK + MCP SDK
-- **Phase IV**: Docker + Minikube + Helm + kubectl-ai
-- **Phase V**: Kafka + Dapr + DigitalOcean DOKS
+- **Frontend**: Next.js 16+ (App Router), TypeScript, Tailwind CSS
+- **Backend**: FastAPI, SQLModel, Python 3.13+
+- **Database**: Neon Serverless PostgreSQL
+- **Auth**: Better Auth + JWT (Shared Secret Pattern)
 
 ## Directory Structure
 ```
 hackathon-todo/
 ├── frontend/          # Next.js frontend
-├── backend/          # FastAPI backend
-├── specs/            # Feature specifications
-├── .specify/         # Spec-Kit configuration
-└── .opencode/       # opencode commands and Agent Skills
+├── backend/           # FastAPI backend
+├── specs/             # Feature, API, and DB specifications
+├── phase1-console/    # Archived Phase I implementation
+└── AGENTS.md          # Project Constitution & Navigation
 ```
 
-## Project Structure
-- `/frontend` - Next.js 14 app
-- `/backend` - Python FastAPI server
-
 ## Development Workflow
-1. Read spec: `specs/features/[feature].md`
-2. Implement backend: `@backend/agents.md`
-3. Implement frontend: `@frontend/agents.md`
-4. Test and iterate
+1. **Read Spec**: Check `specs/features/`, `specs/api/`, or `specs/database/`.
+2. **Implement Backend**: Navigate to `backend/` and follow `backend/agents.md`.
+3. **Implement Frontend**: Navigate to `frontend/` and follow `frontend/agents.md`.
+4. **Test**: Verify integration between Next.js and FastAPI.
+
+## Key Principles (Phase II)
+- **Spec-Driven**: Write specs in `/specs` before any implementation.
+- **No Manual Coding**: Use opencode for all code generation.
+- **Shared Secret**: Use a shared `BETTER_AUTH_SECRET` for JWT verification.
+- **User Isolation**: All database operations must filter by the authenticated `user_id`.
 
 ## Commands
-- Backend: `cd backend && uvicorn main:app --reload --port 8000`
-- Frontend: `cd frontend && npm run dev`
+- **Backend**: `cd backend && uvicorn main:app --reload --port 8000`
+- **Frontend**: `cd frontend && npm run dev`
 
-## Spec-Kit Structure
-Specifications are organized in `/specs`:
-- `/specs/overview.md` - Project overview
-- `/specs/architecture.md` - System architecture
-- `/specs/features/` - Feature specifications
-- `/specs/api/` - API specifications
-- `/specs/database/` - Database specifications
-- `/specs/ui/` - UI specifications
+## Active Plan
+**Current Milestone**: Phase II - Full-Stack Web Application
+**Target**: Implement authentication, REST API, and responsive web UI
+**Spec**: `specs/002-phase2-webapp/spec.md`
+**Plan**: `specs/002-phase2-webapp/plan.md`
 
-## How to Use Specs
-1. Always read relevant spec before implementing
-2. Reference specs with: `@specs/features/task-crud.md`
-3. Use `/speckit.specify` to create new specs
-4. Use `/speckit.plan` to generate plan
-5. Use `/speckit.tasks` to break into tasks
-6. Use `/speckit.implement` to implement
-
-## Phase Progression
-| Phase | Features | Technology |
-|-------|----------|-------------|
-| I | Add, Delete, Update, View, Mark Complete | Python Console |
-| II | + REST API, Auth, Neon DB | Next.js + FastAPI |
-| III | + AI Chatbot, MCP Tools | ChatKit + Agents SDK |
-| IV | + Docker, K8s Deployment | Minikube + Helm |
-| V | + Kafka, Dapr, Cloud | DigitalOcean DOKS |
-
-## Key Principles
-- **Spec-Driven Development**: Write spec first, then implement via opencode
-- **No Manual Coding**: Use opencode to generate all code from specs
-- **Reusable Intelligence**: Use Agent Skills for repeated patterns
+## Governance
+Refer to `.specify/memory/constitution.md` for the full formal rulebook.
+Before starting any task, check `.agents/skills/` for relevant Agent Skills.

@@ -1,0 +1,23 @@
+# Python
+__pycache__/
+*.pyc
+*.pyo
+.venv/
+venv/
+*.egg-info/
+
+# Environment — local secrets never committed
+.env
+.env.*.local
+
+# but commit example/template files
+!.env.example
+
+# IDE
+.idea/
+.vscode/
+*.swp
+
+# OS
+.DS_Store
+*.log
