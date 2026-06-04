@@ -23,6 +23,7 @@ import { useState, useEffect } from "react";
 export interface AuthUser {
   id: number;
   email: string;
+  name?: string | null;
   created_at: string;
 }
 

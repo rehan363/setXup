@@ -1,0 +1,160 @@
+[
+  {
+    "id": "software-sprint",
+    "name": "Software Sprint",
+    "description": "Agile sprint tracking for engineering teams. Pre-configured with QA stages.",
+    "icon": "⚡",
+    "color": "#42A5F5",
+    "statuses": [
+      { "name": "Backlog",     "color": "#9E9E9E", "type": "open",   "order": 0 },
+      { "name": "In Progress", "color": "#42A5F5", "type": "open",   "order": 1 },
+      { "name": "Review",      "color": "#AB47BC", "type": "open",   "order": 2 },
+      { "name": "QA",          "color": "#FF7043", "type": "open",   "order": 3 },
+      { "name": "Done",        "color": "#66BB6A", "type": "closed", "order": 4 }
+    ],
+    "sample_tasks": [
+      { "title": "Set up project repository",    "priority": "high"   },
+      { "title": "Define sprint goals",          "priority": "urgent" },
+      { "title": "Write unit tests",             "priority": "medium" },
+      { "title": "Code review checklist",        "priority": "low"    }
+    ]
+  },
+  {
+    "id": "product-roadmap",
+    "name": "Product Roadmap",
+    "description": "Plan and track product features from idea to launch.",
+    "icon": "🗺️",
+    "color": "#6C47FF",
+    "statuses": [
+      { "name": "Ideation",  "color": "#9E9E9E", "type": "open",   "order": 0 },
+      { "name": "Scoping",   "color": "#42A5F5", "type": "open",   "order": 1 },
+      { "name": "Building",  "color": "#FF7043", "type": "open",   "order": 2 },
+      { "name": "Launched",  "color": "#66BB6A", "type": "closed", "order": 3 }
+    ],
+    "sample_tasks": [
+      { "title": "Define Q3 feature goals",      "priority": "urgent" },
+      { "title": "Competitive analysis",         "priority": "high"   },
+      { "title": "User research interviews",     "priority": "high"   },
+      { "title": "Write product spec",           "priority": "medium" }
+    ]
+  },
+  {
+    "id": "marketing-campaign",
+    "name": "Marketing Campaign",
+    "description": "Manage campaign briefs, content creation, and publishing workflow.",
+    "icon": "📣",
+    "color": "#FF7043",
+    "statuses": [
+      { "name": "Brief",            "color": "#9E9E9E", "type": "open",   "order": 0 },
+      { "name": "Content Creation", "color": "#FFB300", "type": "open",   "order": 1 },
+      { "name": "Review",           "color": "#AB47BC", "type": "open",   "order": 2 },
+      { "name": "Published",        "color": "#66BB6A", "type": "closed", "order": 3 }
+    ],
+    "sample_tasks": [
+      { "title": "Write campaign brief",         "priority": "urgent" },
+      { "title": "Design social media assets",   "priority": "high"   },
+      { "title": "Write blog post draft",        "priority": "medium" },
+      { "title": "Schedule email newsletter",    "priority": "medium" }
+    ]
+  },
+  {
+    "id": "bug-tracker",
+    "name": "Bug Tracker",
+    "description": "Report, triage, and track bugs through to verified resolution.",
+    "icon": "🐛",
+    "color": "#F44336",
+    "statuses": [
+      { "name": "Reported",    "color": "#F44336", "type": "open",   "order": 0 },
+      { "name": "Triaged",     "color": "#FFB300", "type": "open",   "order": 1 },
+      { "name": "In Progress", "color": "#42A5F5", "type": "open",   "order": 2 },
+      { "name": "Fixed",       "color": "#AB47BC", "type": "open",   "order": 3 },
+      { "name": "Verified",    "color": "#66BB6A", "type": "closed", "order": 4 }
+    ],
+    "sample_tasks": [
+      { "title": "Login button broken on mobile",       "priority": "urgent" },
+      { "title": "Dashboard loads slowly on Safari",    "priority": "high"   },
+      { "title": "Email validation accepts invalid format", "priority": "medium" },
+      { "title": "Dark mode flicker on page load",      "priority": "low"    }
+    ]
+  },
+  {
+    "id": "client-project",
+    "name": "Client Project",
+    "description": "Full lifecycle management for client deliverables from kickoff to delivery.",
+    "icon": "💼",
+    "color": "#26A69A",
+    "statuses": [
+      { "name": "Kickoff",     "color": "#9E9E9E", "type": "open",   "order": 0 },
+      { "name": "Design",      "color": "#AB47BC", "type": "open",   "order": 1 },
+      { "name": "Development", "color": "#42A5F5", "type": "open",   "order": 2 },
+      { "name": "UAT",         "color": "#FFB300", "type": "open",   "order": 3 },
+      { "name": "Delivered",   "color": "#66BB6A", "type": "closed", "order": 4 }
+    ],
+    "sample_tasks": [
+      { "title": "Client discovery call",         "priority": "urgent" },
+      { "title": "Project scope document",        "priority": "high"   },
+      { "title": "Wireframe approval",            "priority": "high"   },
+      { "title": "Final delivery & handoff",      "priority": "medium" }
+    ]
+  },
+  {
+    "id": "hr-onboarding",
+    "name": "HR Onboarding",
+    "description": "Structured onboarding checklist from pre-hire to 30-day milestone.",
+    "icon": "👋",
+    "color": "#EC407A",
+    "statuses": [
+      { "name": "Pre-hire", "color": "#9E9E9E", "type": "open",   "order": 0 },
+      { "name": "Day 1",    "color": "#42A5F5", "type": "open",   "order": 1 },
+      { "name": "Week 1",   "color": "#FFB300", "type": "open",   "order": 2 },
+      { "name": "Month 1",  "color": "#AB47BC", "type": "open",   "order": 3 },
+      { "name": "Complete", "color": "#66BB6A", "type": "closed", "order": 4 }
+    ],
+    "sample_tasks": [
+      { "title": "Send welcome email & access credentials", "priority": "urgent" },
+      { "title": "Set up laptop and tools",                 "priority": "high"   },
+      { "title": "Schedule 1:1 with team lead",             "priority": "high"   },
+      { "title": "Complete HR compliance training",         "priority": "medium" }
+    ]
+  },
+  {
+    "id": "content-calendar",
+    "name": "Content Calendar",
+    "description": "Plan, write, edit, and schedule content across channels.",
+    "icon": "📅",
+    "color": "#29B6F6",
+    "statuses": [
+      { "name": "Idea",      "color": "#9E9E9E", "type": "open",   "order": 0 },
+      { "name": "Draft",     "color": "#42A5F5", "type": "open",   "order": 1 },
+      { "name": "Edit",      "color": "#FFB300", "type": "open",   "order": 2 },
+      { "name": "Scheduled", "color": "#AB47BC", "type": "open",   "order": 3 },
+      { "name": "Published", "color": "#66BB6A", "type": "closed", "order": 4 }
+    ],
+    "sample_tasks": [
+      { "title": "Write 'Getting Started' guide", "priority": "high"   },
+      { "title": "YouTube tutorial script",        "priority": "medium" },
+      { "title": "Twitter/X thread on launch",    "priority": "high"   },
+      { "title": "Monthly newsletter",            "priority": "medium" }
+    ]
+  },
+  {
+    "id": "event-planning",
+    "name": "Event Planning",
+    "description": "Coordinate all event logistics from planning through post-event wrap-up.",
+    "icon": "🎪",
+    "color": "#FFA726",
+    "statuses": [
+      { "name": "Planning",   "color": "#9E9E9E", "type": "open",   "order": 0 },
+      { "name": "Execution",  "color": "#42A5F5", "type": "open",   "order": 1 },
+      { "name": "Day-of",     "color": "#FF7043", "type": "open",   "order": 2 },
+      { "name": "Post-event", "color": "#AB47BC", "type": "open",   "order": 3 },
+      { "name": "Closed",     "color": "#66BB6A", "type": "closed", "order": 4 }
+    ],
+    "sample_tasks": [
+      { "title": "Book venue",                    "priority": "urgent" },
+      { "title": "Send invitations",              "priority": "high"   },
+      { "title": "Arrange catering",              "priority": "high"   },
+      { "title": "Post-event survey & debrief",   "priority": "medium" }
+    ]
+  }
+]

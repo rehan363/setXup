@@ -1,42 +1,85 @@
 "use client";
 
+import { useEffect, useState } from "react";
 import { useRouter } from "next/navigation";
-import { LogOut } from "lucide-react";
-import { clearSession, useSession } from "@/lib/auth";
+import { useSession, clearSession } from "@/lib/auth";
+import { AppContextProvider, useAppContext } from "@/components/AppContext";
+import { Sidebar } from "@/components/layout/Sidebar";
+import { Topbar } from "@/components/layout/Topbar";
+import { SpaceCreateModal } from "@/components/modals/SpaceCreateModal";
+import { TaskCreateModal } from "@/components/modals/TaskCreateModal";
+
+// Inner layout that has access to AppContext
+function AppShell({ children }: { children: React.ReactNode }) {
+  const { activeSpaceId, refreshOrgs, refreshSpaces } = useAppContext();
+  const [showSpaceModal, setShowSpaceModal] = useState(false);
+  const [showTaskModal, setShowTaskModal] = useState(false);
+
+  return (
+    <div className="flex h-screen overflow-hidden bg-[var(--bg-primary)]">
+      {/* Sidebar */}
+      <Sidebar onNewSpace={() => setShowSpaceModal(true)} />
+
+      {/* Main content area */}
+      <div className="flex flex-col flex-1 min-w-0 overflow-hidden">
+        {/* Topbar with breadcrumb + view toggle */}
+        <Topbar onNewTask={() => setShowTaskModal(true)} />
+
+        {/* Page content */}
+        <main className="flex-1 overflow-auto" id="main-content">
+          {children}
+        </main>
+      </div>
+
+      {/* Modals */}
+      {showSpaceModal && (
+        <SpaceCreateModal
+          onClose={() => setShowSpaceModal(false)}
+          onSuccess={() => {
+            setShowSpaceModal(false);
+            refreshSpaces();
+          }}
+        />
+      )}
+      {showTaskModal && activeSpaceId && (
+        <TaskCreateModal
+          spaceId={activeSpaceId}
+          onClose={() => setShowTaskModal(false)}
+          onSuccess={() => {
+            setShowTaskModal(false);
+          }}
+        />
+      )}
+    </div>
+  );
+}
 
 export default function AppLayout({ children }: { children: React.ReactNode }) {
   const router = useRouter();
-  const { user } = useSession();
+  const { isAuthenticated, isLoading } = useSession();
 
-  function handleLogout() {
-    clearSession();
-    router.push("/login");
+  useEffect(() => {
+    if (!isLoading && !isAuthenticated) {
+      router.replace("/login");
+    }
+  }, [isLoading, isAuthenticated, router]);
+
+  if (isLoading) {
+    return (
+      <div className="min-h-screen flex items-center justify-center bg-[var(--bg-primary)]">
+        <div className="flex flex-col items-center gap-3">
+          <div className="w-8 h-8 border-2 border-[var(--accent-primary)] border-t-transparent rounded-full animate-spin" />
+          <p className="text-[var(--text-tertiary)] text-sm">Loading…</p>
+        </div>
+      </div>
+    );
   }
 
+  if (!isAuthenticated) return null;
+
   return (
-    <div className="min-h-screen flex flex-col bg-[var(--bg)]">
-      <header className="border-b border-[var(--border)] bg-[var(--bg-card)] sticky top-0 z-10">
-        <div className="max-w-3xl mx-auto px-4 h-16 flex items-center justify-between">
-          <div className="flex items-center gap-2">
-            <span className="font-bold text-lg text-[var(--text)] tracking-tight">todo<span className="text-[var(--accent)]">.</span></span>
-          </div>
-          <div className="flex items-center gap-4">
-            <span className="text-sm text-[var(--text-muted)] hidden sm:inline-block">
-              {user?.email}
-            </span>
-            <button 
-              onClick={handleLogout}
-              className="p-2 text-[var(--text-muted)] hover:text-[var(--text)] transition-colors rounded-md hover:bg-[var(--bg-input)] cursor-pointer focus:outline-none focus:ring-2 focus:ring-[var(--accent)]"
-              aria-label="Log out"
-            >
-              <LogOut size={18} />
-            </button>
-          </div>
-        </div>
-      </header>
-      <main className="flex-1 w-full max-w-3xl mx-auto p-4 sm:p-6 lg:p-8">
-        {children}
-      </main>
-    </div>
+    <AppContextProvider>
+      <AppShell>{children}</AppShell>
+    </AppContextProvider>
   );
 }
