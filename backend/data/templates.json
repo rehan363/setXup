@@ -24,7 +24,7 @@
     "name": "Product Roadmap",
     "description": "Plan and track product features from idea to launch.",
     "icon": "🗺️",
-    "color": "#6C47FF",
+    "color": "#00607a",
     "statuses": [
       { "name": "Ideation",  "color": "#9E9E9E", "type": "open",   "order": 0 },
       { "name": "Scoping",   "color": "#42A5F5", "type": "open",   "order": 1 },

@@ -36,7 +36,7 @@ def test_full_application_flow_with_user_isolation(client):
     # ─── 2. Create Organization as User A ───────────────────────────────────
     org_payload = {
         "name": "Acme Corp Workspace",
-        "brand_color": "#6C47FF"
+        "brand_color": "#00607a"
     }
     res_org = client.post("/api/orgs/", json=org_payload, headers=headers_a)
     assert res_org.status_code == 201
@@ -101,4 +101,49 @@ def test_full_application_flow_with_user_isolation(client):
     # Verify User B cannot get User A's task directly (Isolating individual Task Fetch)
     res_get_task_b = client.get(f"/api/tasks/{task_id}", headers=headers_b)
     assert res_get_task_b.status_code == 403
+
+
+def test_workspace_deletion_by_non_owner_member(client):
+    # 1. Setup Test Users
+    user_a_payload = {"email": "owner@example.com", "password": "password123", "name": "Owner User"}
+    user_b_payload = {"email": "member@example.com", "password": "password123", "name": "Member User"}
+    user_c_payload = {"email": "stranger@example.com", "password": "password123", "name": "Stranger User"}
+    
+    client.post("/api/auth/register", json=user_a_payload)
+    client.post("/api/auth/register", json=user_b_payload)
+    client.post("/api/auth/register", json=user_c_payload)
+    
+    # Log in all users
+    token_a = client.post("/api/auth/login", json={"email": "owner@example.com", "password": "password123"}).json()["token"]
+    token_b = client.post("/api/auth/login", json={"email": "member@example.com", "password": "password123"}).json()["token"]
+    token_c = client.post("/api/auth/login", json={"email": "stranger@example.com", "password": "password123"}).json()["token"]
+    
+    headers_a = {"Authorization": f"Bearer {token_a}"}
+    headers_b = {"Authorization": f"Bearer {token_b}"}
+    headers_c = {"Authorization": f"Bearer {token_c}"}
+    
+    # 2. Create organization as User A
+    org = client.post("/api/orgs/", json={"name": "Test Org"}, headers=headers_a).json()
+    org_id = org["id"]
+    
+    # 3. Invite User B as a member
+    invite_res = client.post(
+        f"/api/orgs/{org_id}/members/invite",
+        json={"email": "member@example.com", "role": "member"},
+        headers=headers_a
+    )
+    assert invite_res.status_code == 201
+    
+    # 4. User C (non-member) tries to delete - should be Forbidden
+    del_c = client.delete(f"/api/orgs/{org_id}", headers=headers_c)
+    assert del_c.status_code == 403
+    
+    # 5. User B (non-owner member) deletes organization - should be successful
+    del_b = client.delete(f"/api/orgs/{org_id}", headers=headers_b)
+    assert del_b.status_code == 204
+    
+    # 6. Verify organization is deleted (404)
+    get_org = client.get(f"/api/orgs/{org_id}", headers=headers_a)
+    assert get_org.status_code == 404
+
 

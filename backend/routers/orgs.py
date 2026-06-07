@@ -11,12 +11,16 @@ Endpoints:
 """
 
 from fastapi import APIRouter, Depends, HTTPException, status
-from sqlmodel import Session, select
+from sqlmodel import Session, select, delete
 from datetime import datetime, timezone
 
 from database import get_session
 from auth import get_current_user
-from models import Organization, OrgMember, User, OrgRoleEnum
+from models import (
+    Organization, OrgMember, User, OrgRoleEnum,
+    Space, SpaceMember, Folder, ProjectList, Status, Tag,
+    Task, TaskTag, Comment, ActivityLog, Checklist, ChecklistItem
+)
 from schemas import OrgCreate, OrgRead, OrgUpdate, OrgMemberRead, OrgMemberInvite
 
 router = APIRouter(prefix="/api/orgs", tags=["Organizations"])
@@ -214,3 +218,98 @@ def list_members(
             )
         )
     return results
+
+
+# ---------------------------------------------------------------------------
+# DELETE /api/orgs/{org_id} — Delete workspace (Owner only)
+# ---------------------------------------------------------------------------
+
+@router.delete("/{org_id}", status_code=status.HTTP_204_NO_CONTENT)
+def delete_org(
+    org_id: int,
+    session: Session = Depends(get_session),
+    current_user: User = Depends(get_current_user),
+):
+    org = _get_org_or_404(org_id, session)
+    
+    # Require membership to delete the organization
+    membership = _get_membership(org_id, current_user.id, session)
+    if not membership:
+        raise HTTPException(
+            status_code=status.HTTP_403_FORBIDDEN,
+            detail="Only workspace members can delete this organization"
+        )
+
+    # 1. Fetch all spaces in the organization
+    spaces_list = session.exec(select(Space).where(Space.org_id == org_id)).all()
+    space_ids = [s.id for s in spaces_list]
+
+    if space_ids:
+        # 2. Fetch all folders in these spaces
+        folders_list = session.exec(select(Folder).where(Folder.space_id.in_(space_ids))).all()
+        folder_ids = [f.id for f in folders_list]
+
+        # 3. Fetch all lists in these spaces
+        lists_list = session.exec(select(ProjectList).where(ProjectList.space_id.in_(space_ids))).all()
+        list_ids = [l.id for l in lists_list]
+
+        if list_ids:
+            # 4. Fetch all tasks in these lists
+            tasks_list = session.exec(select(Task).where(Task.list_id.in_(list_ids))).all()
+            task_ids = [t.id for t in tasks_list]
+
+            if task_ids:
+                # 5. Delete checklist items
+                checklists_list = session.exec(select(Checklist).where(Checklist.task_id.in_(task_ids))).all()
+                checklist_ids = [c.id for c in checklists_list]
+                if checklist_ids:
+                    session.exec(
+                        delete(ChecklistItem).where(ChecklistItem.checklist_id.in_(checklist_ids))
+                    )
+                    # Delete checklists
+                    session.exec(
+                        delete(Checklist).where(Checklist.id.in_(checklist_ids))
+                    )
+                else:
+                    # Fallback task deletion for checklist items
+                    session.exec(delete(Checklist).where(Checklist.task_id.in_(task_ids)))
+
+                # 6. Delete task tags
+                session.exec(delete(TaskTag).where(TaskTag.task_id.in_(task_ids)))
+
+                # 7. Delete comments
+                session.exec(delete(Comment).where(Comment.task_id.in_(task_ids)))
+
+                # 8. Delete activity logs
+                session.exec(delete(ActivityLog).where(ActivityLog.task_id.in_(task_ids)))
+
+                # 9. Delete tasks
+                session.exec(delete(Task).where(Task.id.in_(task_ids)))
+
+            # Delete lists
+            session.exec(delete(ProjectList).where(ProjectList.id.in_(list_ids)))
+
+        if folder_ids:
+            # Delete folders
+            session.exec(delete(Folder).where(Folder.id.in_(folder_ids)))
+
+        # Delete statuses
+        session.exec(delete(Status).where(Status.space_id.in_(space_ids)))
+
+        # Delete space members
+        session.exec(delete(SpaceMember).where(SpaceMember.space_id.in_(space_ids)))
+
+        # Delete spaces
+        session.exec(delete(Space).where(Space.id.in_(space_ids)))
+
+    # 10. Delete organization tags
+    session.exec(delete(Tag).where(Tag.org_id == org_id))
+
+    # 11. Delete organization members
+    session.exec(delete(OrgMember).where(OrgMember.org_id == org_id))
+
+    # 12. Delete the organization
+    session.delete(org)
+    session.commit()
+
+    return None

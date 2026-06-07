@@ -30,7 +30,7 @@ export default function LoginPage() {
 
   // Redirect already-authenticated users
   useEffect(() => {
-    if (getToken()) router.replace("/");
+    if (getToken()) router.replace("/dashboard");
   }, [router]);
 
   // Focus email on mount
@@ -47,7 +47,7 @@ export default function LoginPage() {
     try {
       const { token, user } = await api.auth.login({ email: email.trim(), password });
       setSession(token, user);
-      router.push("/");
+      router.push("/dashboard");
     } catch (err) {
       if (err instanceof ApiError) {
         setError(err.status === 401 ? "Incorrect email or password." : err.message);
@@ -63,7 +63,7 @@ export default function LoginPage() {
     <main className="auth-shell">
       <div className="auth-card">
         {/* Brand */}
-        <p className="auth-logo">todo<span>.</span></p>
+        <p className="auth-logo">set<span>X</span>up<span>.</span></p>
         <p className="auth-tagline">Sign in to your account</p>
 
         {/* Error banner */}

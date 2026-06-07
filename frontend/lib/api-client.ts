@@ -240,6 +240,10 @@ const orgs = {
   listMembers(orgId: number): Promise<OrgMember[]> {
     return request<OrgMember[]>(`/api/orgs/${orgId}/members`);
   },
+
+  delete(id: number): Promise<null> {
+    return request<null>(`/api/orgs/${id}`, { method: "DELETE" });
+  },
 };
 
 const spaces = {

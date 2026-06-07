@@ -279,7 +279,7 @@ class StatusRead(BaseModel):
 
 class TagCreate(BaseModel):
     name: str
-    color: str = "#6C47FF"
+    color: str = "#00607a"
 
 
 class TagRead(BaseModel):

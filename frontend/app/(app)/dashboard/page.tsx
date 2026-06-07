@@ -42,7 +42,7 @@ export default function AppPage() {
       <div className="flex flex-col items-center justify-center h-full min-h-[60vh] gap-4 text-center px-6">
         <div className="text-6xl mb-2">🚀</div>
         <h2 className="text-[22px] font-bold text-[var(--text-primary)]">
-          Welcome to WorkFlow
+          Welcome to setXup
         </h2>
         <p className="text-[var(--text-secondary)] text-[14px] max-w-sm">
           Select a space from the sidebar to start viewing tasks, or create a new space to get started.

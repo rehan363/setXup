@@ -7,7 +7,7 @@ import { useAppContext } from "@/components/AppContext";
 
 const SPACE_ICONS = ["★", "●", "⬡", "☆", "◉"];
 const BRAND_COLORS = [
-  "#6C47FF", // Premium Indigo / Purple Accent
+  "#00607a", // Brand Teal Accent
   "#0EA5E9", // Sky Blue
   "#10B981", // Emerald Green
   "#F59E0B", // Amber Gold
@@ -115,7 +115,7 @@ export function SpaceCreateModal({ onClose, onSuccess }: SpaceCreateModalProps) 
               placeholder="e.g. Product Engineering"
               autoFocus
               required
-              className="w-full max-w-[380px] h-[40px] px-4 rounded-[12px] border border-[var(--border-default)] bg-[var(--bg-primary)] text-[var(--text-primary)] text-[14px] placeholder:[var(--text-tertiary)] focus:outline-none focus:ring-4 focus:ring-[#6C47FF]/15 focus:border-[#6C47FF] transition-all"
+              className="w-full max-w-[380px] h-[40px] px-4 rounded-[12px] border border-[var(--border-default)] bg-[var(--bg-primary)] text-[var(--text-primary)] text-[14px] placeholder:[var(--text-tertiary)] focus:outline-none focus:ring-4 focus:ring-[#00607a]/15 focus:border-[#00607a] transition-all"
             />
           </div>
 

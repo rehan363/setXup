@@ -1,39 +1,55 @@
 "use client";
 
 import React, { useState, useEffect } from "react";
-import { Loader2, Settings, ShieldAlert, Palette, AlertCircle } from "lucide-react";
+import { Loader2, Settings, ShieldAlert, AlertCircle } from "lucide-react";
 import { api } from "@/lib/api-client";
 import { useAppContext } from "@/components/AppContext";
 
 export function SettingsView() {
-  const { activeOrgId, orgs, refreshOrgs } = useAppContext();
+  const { activeOrgId, orgs, refreshOrgs, setActiveOrgId } = useAppContext();
   const activeOrg = orgs.find((o) => o.id === activeOrgId);
 
   const [name, setName] = useState("");
-  const [logoUrl, setLogoUrl] = useState("");
-  const [brandColor, setBrandColor] = useState("#6C47FF");
   const [isSaving, setIsSaving] = useState(false);
   const [error, setError] = useState<string | null>(null);
   const [success, setSuccess] = useState<string | null>(null);
 
+  // Deletion state
+  const [showDeleteModal, setShowDeleteModal] = useState(false);
+  const [deleteConfirmName, setDeleteConfirmName] = useState("");
+  const [isDeleting, setIsDeleting] = useState(false);
+
   useEffect(() => {
     if (activeOrg) {
       setName(activeOrg.name);
-      setLogoUrl(activeOrg.logo_url ?? "");
-      setBrandColor(activeOrg.brand_color ?? "#6C47FF");
     }
   }, [activeOrg]);
 
-  const colors = [
-    { value: "#6C47FF", label: "Purple" },
-    { value: "#0EA5E9", label: "Blue" },
-    { value: "#10B981", label: "Green" },
-    { value: "#F59E0B", label: "Orange" },
-    { value: "#EF4444", label: "Red" },
-    { value: "#8B5CF6", label: "Violet" },
-    { value: "#EC4899", label: "Pink" },
-    { value: "#14B8A6", label: "Teal" },
-  ];
+  async function handleDeleteWorkspace() {
+    if (!activeOrgId || !activeOrg) return;
+    setIsDeleting(true);
+    setError(null);
+    try {
+      await api.orgs.delete(activeOrgId);
+      
+      // Determine the next active organization
+      const nextOrgs = await api.orgs.list();
+      const remainingOrgs = nextOrgs.filter((o) => o.id !== activeOrgId);
+      if (remainingOrgs.length > 0) {
+        setActiveOrgId(remainingOrgs[0].id);
+      } else {
+        setActiveOrgId(null);
+      }
+      
+      await refreshOrgs();
+      setShowDeleteModal(false);
+      setDeleteConfirmName("");
+    } catch (err: any) {
+      setError(err?.message ?? "Failed to delete workspace");
+    } finally {
+      setIsDeleting(false);
+    }
+  }
 
   async function handleSave(e: React.FormEvent) {
     e.preventDefault();
@@ -45,8 +61,6 @@ export function SettingsView() {
     try {
       await api.orgs.update(activeOrgId, {
         name: name.trim(),
-        logo_url: logoUrl.trim() || null as any,
-        brand_color: brandColor,
       });
       setSuccess("Workspace settings updated successfully!");
       await refreshOrgs();
@@ -95,45 +109,7 @@ export function SettingsView() {
             />
           </div>
 
-          {/* Logo URL */}
-          <div className="flex flex-col gap-2">
-            <label htmlFor="logo-url" className="text-xs font-semibold text-[var(--text-secondary)] uppercase tracking-wider">
-              Logo Image URL
-            </label>
-            <input
-              id="logo-url"
-              type="url"
-              disabled={isSaving}
-              placeholder="https://example.com/logo.png"
-              value={logoUrl}
-              onChange={(e) => setLogoUrl(e.target.value)}
-              className="w-full bg-[var(--bg-primary)] border border-[var(--border-default)] rounded-[var(--radius-lg)] px-4 py-2.5 text-[14px] text-[var(--text-primary)] placeholder-[var(--text-tertiary)] focus:border-[var(--accent-primary)] focus:ring-1 focus:ring-[var(--accent-primary)] outline-none transition-all"
-            />
-          </div>
 
-          {/* Brand Color */}
-          <div className="flex flex-col gap-2.5">
-            <span className="text-xs font-semibold text-[var(--text-secondary)] uppercase tracking-wider flex items-center gap-1">
-              <Palette size={12} /> Workspace Brand Color
-            </span>
-            <div className="flex items-center gap-2.5 py-1.5 flex-wrap">
-              {colors.map((color) => (
-                <button
-                  key={color.value}
-                  type="button"
-                  disabled={isSaving}
-                  onClick={() => setBrandColor(color.value)}
-                  style={{ backgroundColor: color.value }}
-                  className={`w-8 h-8 rounded-full transition-all hover:scale-110 active:scale-95 cursor-pointer relative ${
-                    brandColor === color.value 
-                      ? "ring-2 ring-offset-2 ring-[var(--accent-primary)] scale-110" 
-                      : "opacity-80 hover:opacity-100"
-                  }`}
-                  title={color.label}
-                />
-              ))}
-            </div>
-          </div>
 
           {/* Messages */}
           {error && (
@@ -177,15 +153,88 @@ export function SettingsView() {
           <div className="mt-2.5">
             <button
               type="button"
-              className="px-4 py-2 bg-red-500 hover:bg-red-600 disabled:opacity-50 text-white text-[12px] font-semibold rounded-[var(--radius-md)] cursor-not-allowed opacity-60 shadow-sm"
-              title="Delete workspace is currently restricted"
-              disabled
+              onClick={() => {
+                setDeleteConfirmName("");
+                setShowDeleteModal(true);
+              }}
+              className="px-4 py-2 bg-red-500 hover:bg-red-600 text-white text-[12px] font-semibold rounded-[var(--radius-md)] cursor-pointer shadow-sm transition-colors"
             >
               Delete Organization
             </button>
           </div>
         </div>
       </div>
+
+      {/* ── Premium Deletion Confirmation Modal ────────────────── */}
+      {showDeleteModal && activeOrg && (
+        <div className="fixed inset-0 z-50 flex items-center justify-center p-4">
+          {/* Backdrop blur overlay */}
+          <div
+            className="absolute inset-0 bg-black/75 backdrop-blur-sm transition-opacity duration-200 animate-in fade-in"
+            onClick={() => {
+              if (!isDeleting) {
+                setShowDeleteModal(false);
+                setDeleteConfirmName("");
+              }
+            }}
+          />
+
+          {/* Dialog Container */}
+          <div className="relative bg-[var(--bg-elevated)] border border-[var(--border-subtle)] rounded-[14px] shadow-2xl w-full max-w-[400px] overflow-hidden animate-in fade-in zoom-in-95 duration-150 flex flex-col p-6">
+            <div className="flex items-center gap-3 mb-4 text-red-500">
+              <div className="w-9 h-9 rounded-[8px] bg-red-500/10 flex items-center justify-center flex-shrink-0">
+                <ShieldAlert size={16} />
+              </div>
+              <h3 className="text-[15px] font-semibold text-[var(--text-primary)]">
+                Delete workspace
+              </h3>
+            </div>
+
+            <p className="text-[12.5px] text-[var(--text-secondary)] leading-relaxed mb-4">
+              Are you sure you want to permanently delete the workspace <span className="font-semibold text-[var(--text-primary)]">"{activeOrg.name}"</span>?
+              All spaces, folders, lists, comments, checklists, and tasks in this workspace will be completely erased. This action is irreversible.
+            </p>
+
+            <div className="flex flex-col gap-2 mb-5">
+              <label className="text-[10px] font-semibold text-[var(--text-tertiary)] uppercase tracking-widest">
+                Type the workspace name to confirm
+              </label>
+              <input
+                type="text"
+                value={deleteConfirmName}
+                onChange={(e) => setDeleteConfirmName(e.target.value)}
+                placeholder={activeOrg.name}
+                className="w-full h-[38px] px-3.5 rounded-[8px] border border-[var(--border-default)] bg-[var(--bg-primary)] text-[var(--text-primary)] text-[13px] focus:outline-none focus:ring-4 focus:ring-red-500/10 focus:border-red-500/35 transition-all placeholder:[var(--text-tertiary)]"
+                disabled={isDeleting}
+                autoFocus
+              />
+            </div>
+
+            <div className="flex justify-end gap-2.5">
+              <button
+                type="button"
+                onClick={() => {
+                  setShowDeleteModal(false);
+                  setDeleteConfirmName("");
+                }}
+                disabled={isDeleting}
+                className="px-4 py-2 text-[12.5px] font-medium text-[var(--text-secondary)] hover:text-[var(--text-primary)] hover:bg-[var(--bg-hover)] rounded-[8px] transition-colors cursor-pointer border border-transparent disabled:opacity-50"
+              >
+                Cancel
+              </button>
+              <button
+                type="button"
+                onClick={handleDeleteWorkspace}
+                disabled={isDeleting || deleteConfirmName !== activeOrg.name}
+                className="px-4 py-2 text-[12.5px] font-semibold bg-red-650 hover:bg-red-700 text-white rounded-[8px] transition-colors cursor-pointer flex items-center gap-1.5 shadow-md disabled:opacity-25 disabled:cursor-not-allowed disabled:shadow-none"
+              >
+                {isDeleting && <Loader2 size={13} className="animate-spin" />}
+                Delete Workspace
+              </button>
+            </div>
+          </div>
+        </div>
+      )}
     </div>
   );
 }

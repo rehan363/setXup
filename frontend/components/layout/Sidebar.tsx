@@ -10,6 +10,8 @@ import {
   Building2,
   Loader2,
   Trash2,
+  Settings,
+  Users,
 } from "lucide-react";
 import { useAppContext } from "@/components/AppContext";
 import { useSession } from "@/lib/auth";
@@ -110,13 +112,13 @@ export function Sidebar({ onNewSpace }: SidebarProps) {
           <>
             <div
               className="w-8 h-8 rounded-[var(--radius-md)] flex items-center justify-center text-white text-xs font-bold flex-shrink-0"
-              style={{ backgroundColor: activeOrg?.brand_color ?? "#6C47FF" }}
+              style={{ backgroundColor: activeOrg?.brand_color ?? "#00607a" }}
             >
-              {activeOrg ? getInitials(activeOrg.name) : "W"}
+              {activeOrg ? getInitials(activeOrg.name) : "S"}
             </div>
             <div className="flex-1 min-w-0">
               <p className="text-[14px] font-semibold text-[var(--text-primary)] truncate leading-tight">
-                {activeOrg?.name ?? "WorkFlow"}
+                {activeOrg?.name ?? "setXup"}
               </p>
               {orgs.length > 1 && (
                 <p className="text-[11px] text-[var(--text-tertiary)] truncate">
@@ -129,9 +131,9 @@ export function Sidebar({ onNewSpace }: SidebarProps) {
         {collapsed && (
           <div
             className="w-8 h-8 rounded-[var(--radius-md)] flex items-center justify-center text-white text-xs font-bold mx-auto"
-            style={{ backgroundColor: activeOrg?.brand_color ?? "#6C47FF" }}
+            style={{ backgroundColor: activeOrg?.brand_color ?? "#00607a" }}
           >
-            {activeOrg ? getInitials(activeOrg.name) : "W"}
+            {activeOrg ? getInitials(activeOrg.name) : "S"}
           </div>
         )}
       </div>
@@ -265,6 +267,30 @@ export function Sidebar({ onNewSpace }: SidebarProps) {
 
       {/* ── Bottom Items ─────────────────────────────────── */}
       <div className="border-t border-[var(--border-subtle)] py-3 px-3 flex flex-col gap-1">
+        {/* Members link */}
+        <NavItem
+          icon={<Users size={16} />}
+          label="Members"
+          collapsed={collapsed}
+          active={activeView === "members" && activeSpaceId === null}
+          onClick={() => {
+            setActiveSpaceId(null);
+            setActiveView("members");
+          }}
+        />
+
+        {/* Settings link */}
+        <NavItem
+          icon={<Settings size={16} />}
+          label="Settings"
+          collapsed={collapsed}
+          active={activeView === "settings" && activeSpaceId === null}
+          onClick={() => {
+            setActiveSpaceId(null);
+            setActiveView("settings");
+          }}
+        />
+
         {/* Collapse Toggle */}
         <button
           onClick={() => setCollapsed((c) => !c)}

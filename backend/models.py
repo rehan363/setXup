@@ -81,7 +81,7 @@ class Organization(SQLModel, table=True):
     id: Optional[int] = Field(default=None, primary_key=True)
     name: str = Field(max_length=100, index=True)
     logo_url: Optional[str] = Field(default=None, max_length=500)
-    brand_color: Optional[str] = Field(default=None, max_length=7)  # e.g. "#6C47FF"
+    brand_color: Optional[str] = Field(default=None, max_length=7)  # e.g. "#00607a"
     created_by: int = Field(foreign_key="users.id")
     created_at: datetime = Field(default_factory=_now)
 
@@ -187,7 +187,7 @@ class Tag(SQLModel, table=True):
     id: Optional[int] = Field(default=None, primary_key=True)
     org_id: int = Field(foreign_key="organizations.id", index=True)
     name: str = Field(max_length=50)
-    color: str = Field(default="#6C47FF", max_length=7)
+    color: str = Field(default="#00607a", max_length=7)
 
 
 # ---------------------------------------------------------------------------

@@ -1,7 +1,7 @@
 "use client";
 
 import React, { useState, useRef, useEffect } from "react";
-import { Sun, Moon, Plus, Filter, LogOut } from "lucide-react";
+import { Sun, Moon, Plus, Filter, LogOut, Settings, Users } from "lucide-react";
 import { useTheme } from "@/components/ThemeProvider";
 import { useAppContext, ActiveView } from "@/components/AppContext";
 import { useSession, clearSession } from "@/lib/auth";
@@ -19,7 +19,7 @@ interface TopbarProps {
 
 export function Topbar({ onNewTask }: TopbarProps) {
   const { theme, toggleTheme } = useTheme();
-  const { orgs, spaces, activeOrgId, activeSpaceId, activeView, setActiveView } = useAppContext();
+  const { orgs, spaces, activeOrgId, activeSpaceId, activeView, setActiveView, setActiveSpaceId } = useAppContext();
 
   const [dropdownOpen, setDropdownOpen] = useState(false);
   const dropdownRef = useRef<HTMLDivElement>(null);
@@ -74,7 +74,7 @@ export function Topbar({ onNewTask }: TopbarProps) {
             </>
           )}
           {!activeOrg && (
-            <span className="text-[var(--text-secondary)]">WorkFlow</span>
+            <span className="text-[var(--text-secondary)]">setXup</span>
           )}
         </div>
 
@@ -118,7 +118,7 @@ export function Topbar({ onNewTask }: TopbarProps) {
               {/* Trigger Avatar Button */}
               <button
                 onClick={() => setDropdownOpen((v) => !v)}
-                className="w-8 h-8 rounded-full bg-gradient-to-br from-blue-500 to-indigo-600 hover:ring-2 hover:ring-blue-400/40 text-white font-bold text-[13px] flex items-center justify-center cursor-pointer transition-all shadow-md focus:outline-none"
+                className="w-8 h-8 rounded-full bg-gradient-to-br from-[#00607a] to-[#008ba8] hover:ring-2 hover:ring-[#008ba8]/40 text-white font-bold text-[13px] flex items-center justify-center cursor-pointer transition-all shadow-md focus:outline-none"
                 title="Account menu"
                 aria-label="Open account menu"
               >
@@ -141,8 +141,8 @@ export function Topbar({ onNewTask }: TopbarProps) {
                     <div className="flex items-center" style={{ gap: "12px" }}>
                       {/* Avatar */}
                       <div
-                        className="rounded-full bg-gradient-to-br from-blue-500 to-indigo-600 flex items-center justify-center text-white font-bold flex-shrink-0"
-                        style={{ width: "36px", height: "36px", fontSize: "14px", boxShadow: "0 2px 8px rgba(99,102,241,0.3)" }}
+                        className="rounded-full bg-gradient-to-br from-[#00607a] to-[#008ba8] flex items-center justify-center text-white font-bold flex-shrink-0"
+                        style={{ width: "36px", height: "36px", fontSize: "14px", boxShadow: "0 2px 8px rgba(0,96,122,0.3)" }}
                       >
                         {user.email ? user.email[0].toUpperCase() : "U"}
                       </div>
@@ -175,6 +175,40 @@ export function Topbar({ onNewTask }: TopbarProps) {
                   <div
                     className="bg-[var(--border-subtle)]"
                     style={{ height: "1px", margin: "0 12px" }}
+                  />
+
+                  {/* ── Navigation Links ──────────────────── */}
+                  <div style={{ padding: "8px 8px 4px 8px" }} className="flex flex-col gap-0.5">
+                    <button
+                      onClick={() => {
+                        setActiveSpaceId(null);
+                        setActiveView("members");
+                        setDropdownOpen(false);
+                      }}
+                      className="w-full flex items-center text-[var(--text-secondary)] hover:text-[var(--text-primary)] hover:bg-[var(--bg-hover)] rounded-lg font-medium transition-all duration-150 cursor-pointer"
+                      style={{ gap: "8px", padding: "6px 12px", fontSize: "12.5px" }}
+                    >
+                      <Users size={14} className="flex-shrink-0" />
+                      <span>Workspace Members</span>
+                    </button>
+                    <button
+                      onClick={() => {
+                        setActiveSpaceId(null);
+                        setActiveView("settings");
+                        setDropdownOpen(false);
+                      }}
+                      className="w-full flex items-center text-[var(--text-secondary)] hover:text-[var(--text-primary)] hover:bg-[var(--bg-hover)] rounded-lg font-medium transition-all duration-150 cursor-pointer"
+                      style={{ gap: "8px", padding: "6px 12px", fontSize: "12.5px" }}
+                    >
+                      <Settings size={14} className="flex-shrink-0" />
+                      <span>Workspace Settings</span>
+                    </button>
+                  </div>
+
+                  {/* Divider */}
+                  <div
+                    className="bg-[var(--border-subtle)]"
+                    style={{ height: "1px", margin: "4px 12px" }}
                   />
 
                   {/* ── Logout Section ────────────────────── */}

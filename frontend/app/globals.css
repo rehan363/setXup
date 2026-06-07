@@ -1,6 +1,7 @@
 @import "tailwindcss";
-@source "../";
-/* Tailwind v4 — scan everything from project root */
+@source "../components/**/*.{ts,tsx}";
+@source "./**/*.{ts,tsx}";
+/* Tailwind v4 — scan components and app routes precisely */
 
 /* ── Guaranteed Spacing Utilities (purge-safe) ──────────────────────────────
    These are plain CSS classes, not Tailwind utilities, so they are ALWAYS
@@ -37,16 +38,27 @@
 .py-6 { padding-top: 24px; padding-bottom: 24px }
 .py-7 { padding-top: 28px; padding-bottom: 28px }
 .py-8 { padding-top: 32px; padding-bottom: 32px }
+.py-12 { padding-top: 48px; padding-bottom: 48px }
+.py-16 { padding-top: 64px; padding-bottom: 64px }
+.py-20 { padding-top: 80px; padding-bottom: 80px }
+.py-24 { padding-top: 96px; padding-bottom: 96px }
 
 /* Individual sides */
 .pt-1 { padding-top: 4px }    .pt-2 { padding-top: 8px }
 .pt-3 { padding-top: 12px }   .pt-4 { padding-top: 16px }
 .pt-5 { padding-top: 20px }   .pt-6 { padding-top: 24px }
 .pt-7 { padding-top: 28px }   .pt-8 { padding-top: 32px }
+.pt-24 { padding-top: 96px }  .pt-2\.5 { padding-top: 10px }
 .pb-1 { padding-bottom: 4px } .pb-2 { padding-bottom: 8px }
 .pb-3 { padding-bottom: 12px }.pb-4 { padding-bottom: 16px }
 .pb-5 { padding-bottom: 20px }.pb-6 { padding-bottom: 24px }
 .pb-7 { padding-bottom: 28px }.pb-8 { padding-bottom: 32px }
+.pb-20 { padding-bottom: 80px }
+
+@media (min-width: 768px) {
+  .md\:pt-32 { padding-top: 128px }
+  .md\:pb-28 { padding-bottom: 112px }
+}
 .pl-1 { padding-left: 4px }   .pl-2 { padding-left: 8px }
 .pl-3 { padding-left: 12px }  .pl-4 { padding-left: 16px }
 .pl-6 { padding-left: 24px }  .pl-8 { padding-left: 32px }
@@ -64,10 +76,14 @@
 .mt-2  { margin-top: 8px }  .mt-3 { margin-top: 12px }
 .mt-4  { margin-top: 16px } .mt-5 { margin-top: 20px }
 .mt-6  { margin-top: 24px } .mt-8 { margin-top: 32px }
+.mt-10 { margin-top: 40px } .mt-12 { margin-top: 48px }
+.mt-16 { margin-top: 64px }
 .mb-0  { margin-bottom: 0 } .mb-1 { margin-bottom: 4px }
 .mb-2  { margin-bottom: 8px }.mb-3 { margin-bottom: 12px }
 .mb-4  { margin-bottom: 16px}.mb-5{ margin-bottom: 20px }
 .mb-6  { margin-bottom: 24px}.mb-8{ margin-bottom: 32px }
+.mb-10 { margin-bottom: 40px }.mb-12 { margin-bottom: 48px }
+.mb-16 { margin-bottom: 64px }
 .ml-1  { margin-left: 4px }  .ml-2 { margin-left: 8px }
 .ml-3  { margin-left: 12px } .ml-4 { margin-left: 16px }
 .mr-1  { margin-right: 4px } .mr-2 { margin-right: 8px }
@@ -152,9 +168,9 @@
   --border-default: #D4D4D2;      /* Input fields */
   --border-strong:  #B0B0AE;      /* Active/focused states */
 
-  --accent-primary: #6C47FF;      /* Primary CTA, active items */
-  --accent-hover:   #5A38E8;      /* Hover state */
-  --accent-light:   #F0ECFF;      /* Accent background wash */
+  --accent-primary: #00607a;      /* Primary CTA, active items */
+  --accent-hover:   #004d62;      /* Hover state */
+  --accent-light:   #e6f2f5;      /* Accent background wash */
 
   /* Priority Colors */
   --priority-urgent: #F44336;
@@ -224,9 +240,9 @@
   --border-default: #3A3A3A;
   --border-strong:  #525252;
 
-  --accent-primary: #7C5CFF;
-  --accent-hover:   #6C47FF;
-  --accent-light:   #2A2040;
+  --accent-primary: #008ba8;
+  --accent-hover:   #00607a;
+  --accent-light:   #002c38;
 
   --bg-hover:       #333333;
 
@@ -238,6 +254,19 @@
   --text:         var(--text-primary);
   --text-muted:   var(--text-secondary);
   --accent:       var(--accent-primary);
+}
+
+/* Teal Theme Overrides */
+.theme-teal {
+  --accent-primary: #00607a;
+  --accent-hover:   #004d62;
+  --accent-light:   #e6f2f5;
+}
+
+[data-theme="dark"] .theme-teal {
+  --accent-primary: #008ba8;
+  --accent-hover:   #00607a;
+  --accent-light:   #002c38;
 }
 
 @theme inline {
@@ -558,4 +587,113 @@ input:checked + svg .checkbox-draw {
 .modal-grid-spacing {
   grid-template-columns: repeat(5, minmax(0, 1fr)) !important;
 }
+
+/* ── Premium Landing Page Visual Effects ────────────────────────── */
+
+/* Floating Orbs */
+@keyframes orb-float {
+  0%, 100% {
+    transform: translateY(0) scale(1) rotate(0deg);
+  }
+  33% {
+    transform: translateY(-20px) scale(1.08) rotate(120deg);
+  }
+  66% {
+    transform: translateY(15px) scale(0.92) rotate(240deg);
+  }
+}
+
+.glow-orb {
+  position: absolute;
+  border-radius: 50%;
+  filter: blur(90px);
+  opacity: 0.12;
+  mix-blend-mode: screen;
+  pointer-events: none;
+  animation: orb-float 18s ease-in-out infinite;
+}
+
+[data-theme="dark"] .glow-orb {
+  opacity: 0.07;
+  mix-blend-mode: plus-lighter;
+}
+
+/* Shimmer shine effect for primary buttons */
+@keyframes button-shine {
+  0% {
+    left: -120%;
+  }
+  40%, 100% {
+    left: 150%;
+  }
+}
+
+.button-premium-shine {
+  position: relative;
+  overflow: hidden;
+}
+
+.button-premium-shine::after {
+  content: '';
+  position: absolute;
+  top: 0;
+  height: 100%;
+  width: 50px;
+  background: linear-gradient(
+    to right,
+    rgba(255, 255, 255, 0) 0%,
+    rgba(255, 255, 255, 0.4) 50%,
+    rgba(255, 255, 255, 0) 100%
+  );
+  transform: skewX(-25deg);
+  left: -120%;
+  animation: button-shine 5s ease-in-out infinite;
+}
+
+/* Card Interactive Glassmorphism */
+.card-interactive {
+  background: var(--bg-secondary);
+  border: 1px solid var(--border-subtle);
+  transition: all 0.4s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.card-interactive:hover {
+  transform: translateY(-4px);
+  border-color: rgba(0, 96, 122, 0.4);
+  box-shadow: 0 12px 30px -10px rgba(0, 96, 122, 0.12);
+}
+
+[data-theme="dark"] .card-interactive:hover {
+  border-color: rgba(0, 139, 168, 0.5);
+  box-shadow: 0 12px 40px -10px rgba(0, 139, 168, 0.18);
+}
+
+/* Floating SaaS Micro-Cards Animations */
+@keyframes card-float-left {
+  0%, 100% {
+    transform: translateY(0) rotate(-1deg);
+  }
+  50% {
+    transform: translateY(-12px) rotate(1.5deg);
+  }
+}
+
+@keyframes card-float-right {
+  0%, 100% {
+    transform: translateY(0) rotate(1deg);
+  }
+  50% {
+    transform: translateY(-16px) rotate(-1.5deg);
+  }
+}
+
+.float-card-left {
+  animation: card-float-left 7s ease-in-out infinite;
+}
+
+.float-card-right {
+  animation: card-float-right 8s ease-in-out infinite;
+}
+
+
 

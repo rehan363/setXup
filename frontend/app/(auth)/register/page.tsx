@@ -31,7 +31,7 @@ export default function RegisterPage() {
 
   // Redirect already-authenticated users
   useEffect(() => {
-    if (getToken()) router.replace("/");
+    if (getToken()) router.replace("/dashboard");
   }, [router]);
 
   // Focus email on mount
@@ -54,7 +54,7 @@ export default function RegisterPage() {
       // 2. Auto-login so the user lands in the app immediately
       const { token, user } = await api.auth.login({ email: email.trim(), password });
       setSession(token, user);
-      router.push("/");
+      router.push("/dashboard");
     } catch (err) {
       if (err instanceof ApiError) {
         if (err.status === 409) {
@@ -76,7 +76,7 @@ export default function RegisterPage() {
     <main className="auth-shell">
       <div className="auth-card">
         {/* Brand */}
-        <p className="auth-logo">todo<span>.</span></p>
+        <p className="auth-logo">set<span>X</span>up<span>.</span></p>
         <p className="auth-tagline">Create your account</p>
 
         {/* Error banner */}

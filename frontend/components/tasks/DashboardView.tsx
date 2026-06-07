@@ -19,17 +19,9 @@ export function DashboardView() {
 
   // Workspace creation form states
   const [workspaceName, setWorkspaceName] = useState("");
-  const [brandColor, setBrandColor] = useState("#6C47FF");
+  const brandColor = "#00607a";
   const [isCreatingOrg, setIsCreatingOrg] = useState(false);
   const [createOrgError, setCreateOrgError] = useState<string | null>(null);
-
-  const colors = [
-    { value: "#6C47FF", label: "Purple" },
-    { value: "#0EA5E9", label: "Blue" },
-    { value: "#10B981", label: "Green" },
-    { value: "#F59E0B", label: "Orange" },
-    { value: "#EF4444", label: "Red" },
-  ];
 
   useEffect(() => {
     loadDashboard();
@@ -97,7 +89,7 @@ export function DashboardView() {
               Create your Workspace
             </h2>
             <p className="text-[var(--text-secondary)] text-sm leading-relaxed max-w-sm">
-              Workspaces organize everything. Let's name your new environment and pick a brand color.
+              Workspaces organize everything. Let's name your new environment.
             </p>
           </div>
 
@@ -118,27 +110,7 @@ export function DashboardView() {
               />
             </div>
 
-            <div className="flex flex-col gap-2">
-              <span className="text-xs font-semibold text-[var(--text-secondary)] uppercase tracking-wider">
-                Brand Color
-              </span>
-              <div className="flex items-center gap-3 py-1 flex-wrap">
-                {colors.map((color) => (
-                  <button
-                    key={color.value}
-                    type="button"
-                    disabled={isCreatingOrg}
-                    onClick={() => setBrandColor(color.value)}
-                    style={{ backgroundColor: color.value }}
-                    className={`unshrinkable-circle transition-transform hover:scale-110 active:scale-95 cursor-pointer relative ${brandColor === color.value
-                      ? "ring-2 ring-offset-2 ring-[var(--accent-primary)] scale-110"
-                      : ""
-                      }`}
-                    title={color.label}
-                  />
-                ))}
-              </div>
-            </div>
+
 
             {createOrgError && (
               <div className="flex items-center gap-2 p-3 bg-red-500/10 border border-red-500/20 text-red-500 rounded-[var(--radius-lg)] text-xs">
@@ -238,7 +210,7 @@ export function DashboardView() {
       <div className="flex flex-col md:flex-row md:items-center justify-between gap-4 border-b border-[var(--border-subtle)] pb-6 mb-2">
         <div>
           <div className="flex items-center gap-2.5">
-            <span className="text-[10px] font-bold text-[#6C47FF] uppercase tracking-[0.2em] bg-[#6C47FF]/10 px-2.5 py-1 rounded-[6px] border border-[#6C47FF]/15">
+            <span className="text-[10px] font-bold text-[#00607a] uppercase tracking-[0.2em] bg-[#00607a]/10 px-2.5 py-1 rounded-[6px] border border-[#00607a]/15">
               Workspace Overview
             </span>
             {activeSpace && (
@@ -252,7 +224,7 @@ export function DashboardView() {
             )}
           </div>
           <h1 className="text-[26px] font-bold text-[var(--text-primary)] tracking-tight mt-2.5 flex items-center gap-2">
-            Welcome back, <span className="text-transparent bg-clip-text bg-gradient-to-r from-blue-500 via-sky-500 to-indigo-500 font-extrabold tracking-tight">{capitalizedName}</span>
+            Welcome back, <span className="text-transparent bg-clip-text bg-gradient-to-r from-[#00607a] via-[#008ba8] to-[#00b2d6] font-extrabold tracking-tight">{capitalizedName}</span>
           </h1>
           <p className="text-[var(--text-secondary)] text-[13.5px] mt-1 leading-relaxed">
             Here is a summary of what needs your attention in <span className="text-[var(--text-primary)] font-semibold">{activeSpace ? activeSpace.name : (activeOrg ? activeOrg.name : "your workspace")}</span>.
@@ -274,7 +246,7 @@ export function DashboardView() {
           label="Total Tasks"
           value={stats.total_tasks}
           icon={<TrendingUp size={15} />}
-          color="#6C47FF"
+          color="#00607a"
         />
         <StatCard
           label="Completed"
@@ -350,11 +322,24 @@ export function DashboardView() {
                 <path
                   d={linePath}
                   fill="none"
-                  stroke="#3B82F6"
+                  stroke="#00607a"
                   strokeWidth="2.5"
                   strokeLinecap="round"
                   strokeLinejoin="round"
                 />
+
+                {/* Vertices circles */}
+                {points.map((p, i) => (
+                  <circle
+                    key={`circle-${i}`}
+                    cx={p.x}
+                    cy={p.y}
+                    r="3.5"
+                    fill="var(--bg-primary)"
+                    stroke="#00607a"
+                    strokeWidth="2"
+                  />
+                ))}
 
                 {/* Date Labels below vertices */}
                 {points.map((p, i) => (
@@ -453,7 +438,7 @@ export function DashboardView() {
                   <div key={entry.user_id} className="flex flex-col gap-3 group">
                     <div className="flex items-center justify-between gap-3">
                       <div className="flex items-center gap-3">
-                        <div className="w-8 h-8 rounded-full bg-gradient-to-br from-blue-500 to-indigo-600 flex items-center justify-center text-white text-[12px] font-extrabold flex-shrink-0 transition-transform group-hover:scale-105 duration-200 shadow-md">
+                        <div className="w-8 h-8 rounded-full bg-gradient-to-br from-[#00607a] to-[#008ba8] flex items-center justify-center text-white text-[12px] font-extrabold flex-shrink-0 transition-transform group-hover:scale-105 duration-200 shadow-md">
                           {entry.email[0].toUpperCase()}
                         </div>
                         <div className="flex flex-col">
@@ -479,7 +464,7 @@ export function DashboardView() {
                     <div className="flex items-center gap-3">
                       <div className="flex-1 h-2 bg-[var(--bg-primary)] rounded-full overflow-hidden border border-[var(--border-subtle)]">
                         <div
-                          className="h-full rounded-full transition-all duration-700 bg-gradient-to-r from-[#6C47FF] to-[#8B5CF6] shadow-[0_0_8px_rgba(108,71,255,0.2)]"
+                          className="h-full rounded-full transition-all duration-700 bg-gradient-to-r from-[#00607a] to-[#008ba8] shadow-[0_0_8px_rgba(0,96,122,0.2)]"
                           style={{ width: `${sharePct}%` }}
                         />
                       </div>

@@ -15,7 +15,7 @@ const geistMono = Geist_Mono({
 });
 
 export const metadata: Metadata = {
-  title: "WorkFlow — Enterprise Task Management",
+  title: "setXup — Enterprise Task Management",
   description: "ClickUp-level enterprise task management. Organize work across spaces, boards, and calendars.",
 };
 

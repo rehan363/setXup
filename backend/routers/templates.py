@@ -71,7 +71,7 @@ def list_templates():
             "name": t["name"],
             "description": t["description"],
             "icon": t.get("icon", "📋"),
-            "color": t.get("color", "#6C47FF"),
+            "color": t.get("color", "#00607a"),
             "status_count": len(t["statuses"]),
         }
         for t in templates
