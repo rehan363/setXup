@@ -24,3 +24,8 @@ node_modules/
 .vscode/
 *.swp
 *.tmp
+
+# Local-only hackathon artifacts
+Hackathon II - Todo Spec-Driven Development.md
+error learning/
+phase1-console/
