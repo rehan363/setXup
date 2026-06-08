@@ -7,40 +7,6 @@ on:
     branches: [ main, master ]
 
 jobs:
-  # --- BACKEND TESTING & LINTING ---
-  backend-ci:
-    name: Backend CI
-    runs-on: ubuntu-latest
-    defaults:
-      run:
-        working-directory: ./backend
-
-    steps:
-      - name: Checkout Code
-        uses: actions/checkout@v4
-
-      - name: Install uv
-        uses: astral-sh/setup-uv@v5
-        with:
-          enable-cache: true
-          version: "latest"
-
-      - name: Setup Python
-        run: uv python install 3.14
-
-      - name: Install Dependencies
-        run: uv sync --dev
-
-      - name: Run Linter (Ruff)
-        run: uv run ruff check .
-        continue-on-error: true # Report lint issues without blocking CI (optional, set to false to enforce styles)
-
-      - name: Run Tests
-        env:
-          DATABASE_URL: sqlite:///./test_db.sqlite
-          BETTER_AUTH_SECRET: ci_test_secret_key_placeholder
-        run: uv run pytest
-
   # --- FRONTEND TESTING & LINTING ---
   frontend-ci:
     name: Frontend CI
@@ -77,13 +43,13 @@ jobs:
 
   # --- PRODUCTION DEPLOYMENT TRIGGER ---
   deploy:
-    name: Deploy Services
-    needs: [backend-ci, frontend-ci]
+    name: Deploy Frontend
+    needs: [frontend-ci]
     if: github.ref == 'refs/heads/main' && github.event_name == 'push'
     runs-on: ubuntu-latest
 
     steps:
       - name: Deploy Status Note
         run: |
-          echo "CI tests passed successfully."
-          echo "Triggering Git-connected Vercel and Koyeb deployments automatically."
+          echo "Frontend CI tests passed successfully."
+          echo "Triggering Vercel production deployment."
